@@ -25,7 +25,7 @@ exports.addressFromString = function ( toolkit, text ) {
     var addresses = findPostcodes(blocks, postcodes);
     if (addresses.length <= 0)
     	addresses = findPostcodes(blocks, altPostcodes);
-
+    
     // Partial addresses with just a postcode, try a little harder to find an
     // address for it...
     var deletedOnTheFly = false;
@@ -88,11 +88,8 @@ exports.addressFromString = function ( toolkit, text ) {
         // General address prefixing stuff to remove
         prefix = prefix.replace(/^.*(Registered Offices?( is| are)?|Tel|Telephone|Website|Fax|Address)\s*:\s*/mi, '');
         
-        // Remove comma from price string and replace with period.
-        console.log(prefix);
-        prefix = prefix.replace(/\s*[$]\d{1,3}(,\d\d\d)+\s*/, '.');
-        console.log(prefix);
-        //prefix = prefix.replace(/[€]/g, '.');
+        // Remove comma from price string.
+        prefix = prefix.replace(/\s*([$]\d{1,3})(,(\d\d\d))+\s/, '$1$3 ');
 
         // Characters used for splitting atoms -> ,s
         prefix = prefix.replace(/[\n|]/g, ',');

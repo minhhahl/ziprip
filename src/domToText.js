@@ -14,8 +14,11 @@ exports.domToText = function ( dom, toolkit ) {
     // Nodes that map to text values
     var nodeMappings = {
         'h1_start'  : "\n\n",
+        'h1_end'	: "\n",
         'h2_start'  : "\n\n",
+        'h2_end'	: "\n",
         'h3_start'  : "\n\n",
+        'h3_end'	: "\n",
         'p_start'   : "\n",
         'p_end'     : "\n",
         'span_start': "",
